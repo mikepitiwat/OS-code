@@ -1,4 +1,5 @@
 #include <stdio.h>
+#define N 5  // จำนวนโปรเซส
 
 typedef struct{
     int BurtT;
@@ -8,20 +9,20 @@ typedef struct{
     int end;
 }Process;
 
-//Process  burt time , Arrival time , Priority
-Process P[6]= {{NULL},          // P0 = P[0] = NULL
-               {9 , 1 , 3},     // P1 = P[1]
-               {3 , 1 , 5},     // P2 = P[2]
-               {5 , 3 , 1},     // P3 = P[3]
-               {4 , 4 , 4},     // P4 = P[4]
-               {2 , 7 , 2}};    // P5 = P[5]
+                 //Process  burt time , Arrival time , Priority
+Process P[N+1]  =  {{0}, 
+                    /*P1*/ {    9     ,       1      ,      3},     // P1 = P[1]
+                    /*P2*/ {    3     ,       1      ,      5},     // P2 = P[2]
+                    /*P3*/ {    5     ,       3      ,      1},     // P3 = P[3]
+                    /*P4*/ {    4     ,       4      ,      4},     // P4 = P[4]
+                    /*P5*/ {    2     ,       7      ,      2}};    // P5 = P[5]
 
 int Gantt[20];
 int Q[99];       // คิว
 int SP = 0;      // ชี้ค่าในคิว
-int NP = 5;      // number process
-int NT = 24;     // number time
 int NG = 0;      // number Gantt_chart
+int NT = 24;     // number time
+int NP = N;      // number process
 
 void push(int index){
     SP++;
