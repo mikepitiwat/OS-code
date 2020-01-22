@@ -153,7 +153,7 @@ float waitProcess(int indexP){                                    // คำน�
 void calNT(){
     int sumBurt = 0;
     int minArrival = P[1].ArrivalT;
-    for (int i = 1; i < NP; ++i) {
+    for (int i = 1; i <= NP; ++i) {
         if(P[i].ArrivalT < minArrival){
             minArrival = P[i].ArrivalT;
         }
