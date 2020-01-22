@@ -9,7 +9,7 @@ typedef struct{
     int end;
 }Process;
 
-//Process  burt time , Arrival time , Priority
+     //Process  burt time , Arrival time , Priority
 Process P[N+1]  =  {{0},
         /*P1*/ {    9     ,       1      ,      3},     // P1 = P[1]
         /*P2*/ {    3     ,       1      ,      5},     // P2 = P[2]
@@ -21,7 +21,7 @@ int Gantt[20];
 int Q[99];       // คิว
 int SP = 0;      // ชี้ค่าในคิว
 int NG = 0;      // number Gantt chart
-int NT = 30;     // number time
+int NT = 0;     // number time
 int NP = N;      // number process
 
 void push(int index){
@@ -78,7 +78,7 @@ int sort_Q(){
     return Q[SP];
 }
 
-void Non_PreSJF(){
+void SJF_NonPre(){
     int index, END_P = 0;
     for (int i = 0; i <NT ; ++i) {                  // i แทน time(เวลา)
         for (int j = 1; j <=NP ; ++j) {
@@ -108,12 +108,25 @@ void Non_PreSJF(){
     }
 }
 
+void calNT(){
+    int sumBurt = 0;
+    int minArrival = P[1].ArrivalT;
+    for (int i = 1; i < NP; ++i) {
+        if(P[i].ArrivalT < minArrival){
+            minArrival = P[i].ArrivalT;
+        }
+        sumBurt += P[i].BurtT;
+    }
+    NT = minArrival + sumBurt;
+}
+
 int main(){
+    calNT();
     printf("# Mr Pitiwat Promnimit ID:61543206020-5\n");
     printf("# OUTPUT LAB6 CPU Scheduling\n");
-    printf("# Non Preemptive SJF\n");
+    printf("# SJF Non Preemptive \n");
     printf("Sequence process is :");
-    Non_PreSJF();
+    SJF_NonPre();
     for (int i = 0; i <NG ; i++) {
         printf("P%d", Gantt[i]);
         if(i<NG-1)
