@@ -9,13 +9,13 @@ typedef struct{
     int end;
 }Process;
 
-                 //Process  burt time , Arrival time , Priority
-Process P[N+1]  =  {{0}, 
-                    /*P1*/ {    9     ,       1      ,      3},     // P1 = P[1]
-                    /*P2*/ {    3     ,       1      ,      5},     // P2 = P[2]
-                    /*P3*/ {    5     ,       3      ,      1},     // P3 = P[3]
-                    /*P4*/ {    4     ,       4      ,      4},     // P4 = P[4]
-                    /*P5*/ {    2     ,       7      ,      2}};    // P5 = P[5]
+//Process  burt time , Arrival time , Priority
+Process P[N+1]  =  {{0},
+        /*P1*/ {    9     ,       1      ,      3},     // P1 = P[1]
+        /*P2*/ {    3     ,       1      ,      5},     // P2 = P[2]
+        /*P3*/ {    5     ,       3      ,      1},     // P3 = P[3]
+        /*P4*/ {    4     ,       4      ,      4},     // P4 = P[4]
+        /*P5*/ {    2     ,       7      ,      2}};    // P5 = P[5]
 
 int Gantt[20];
 int Q[99];       // คิว
