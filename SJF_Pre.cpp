@@ -19,7 +19,7 @@ typedef struct{
     int startP;
 }Gantt_C;
 
-//Process  burt time , Arrival time , Priority
+     //Process  burt time , Arrival time , Priority
 Process P[N+1]  =  {{0},
         /*P1*/ {    9     ,       1      ,      3},     // P1 = P[1]
         /*P2*/ {    3     ,       1      ,      5},     // P2 = P[2]
