@@ -160,7 +160,7 @@ int main(){
     printf("\nAverage time is %.2f", avgTime);
     printf("\nTurnaround time\n");
     for (int i = 1; i <= NP; i++) {
-        printf("|P%d =%-6.2f ms ", i, ((float) P[i].start - P[i].ArrivalT) + P[i].BurtT);
+        printf("|P%d = %-6.2fms ", i, ((float) P[i].start - P[i].ArrivalT) + P[i].BurtT);
     }
     printf("\n------------------------------------------------------------\n");
     return 0;
