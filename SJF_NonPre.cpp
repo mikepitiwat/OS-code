@@ -21,7 +21,7 @@ int Gantt[20];
 int Q[99];       // คิว
 int SP = 0;      // ชี้ค่าในคิว
 int NG = 0;      // number Gantt chart
-int NT = 0;     // number time
+int NT = 0;      // number time
 int NP = N;      // number process
 
 void push(int index){
@@ -79,12 +79,13 @@ int sort_Q(){
 }
 
 void SJF_NonPre(){
-    int index, END_P = 0;
+    int index = 0, END_P = 0;
     for (int i = 0; i <NT ; ++i) {                  // i แทน time(เวลา)
         for (int j = 1; j <=NP ; ++j) {
             if(i == P[j].ArrivalT) {                // ณ เวลาที่ i มี process[j] เกิดขึ้น
                 index = duplicate(j);               // ตรวจสอบว่า ณ เวลานี่(i) มีโปรเซสเกิดขึ้นพร้อมกัน ใช่หรือไม่
-                if(i >= END_P){                     // ทรัพยากรว่าง(ไม่มีโปรเซสไหนที่กำลังทำงาน) = โปรเซสสามารเข้าไปทำงานได้
+                if(i >= END_P && P[index].BurtT < P[sort_Q()].BurtT){ // ทรัพยากรว่าง(ไม่มีโปรเซสไหนที่กำลังทำงาน) = โปรเซสสามารเข้าไปทำงานได้
+                    // แต่ ในกรณีที่ ทรัพยากรว่างพอดี แล้วมีโปรเซสเเกิดใหม่แต่ใช้เวลาทำงานมากกว่าโปรเซสในคิว ให้โปรเซสที่เกิดใหม่ไปเก็บในคิว
                     END_P = i + P[index].BurtT;     // เวลาจบการทำงานของโปรเซส
                     Gantt[NG]       = index;
                     P[index].start  = i;            //เก็บค่าเวลาที่โปรเซสได้เริ่มทำงาน
