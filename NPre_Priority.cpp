@@ -84,7 +84,8 @@ void NPre_Priority(){
         for (int j = 1; j <=NP ; ++j) {
             if(i == P[j].ArrivalT) {                // ณ เวลาที่ i มี process[j] เกิดขึ้น
                 index = duplicate(j);               // ตรวจสอบว่า ณ เวลานี่(i) มีโปรเซสเกิดขึ้นพร้อมกัน ใช่หรือไม่
-                if(i >= END_P){                     // ทรัพยากรว่าง(ไม่มีโปรเซสไหนที่กำลังทำงาน) = โปรเซสสามารเข้าไปทำงานได้
+                if(i >= END_P && P[index].Priority < P[sort_Q()].Priority){ // ทรัพยากรว่าง(ไม่มีโปรเซสไหนที่กำลังทำงาน) = โปรเซสสามารเข้าไปทำงานได้
+                    // แต่ ในกรณีที่ ทรัพยากรว่างพอดี แล้วมีโปรเซสเเกิดใหม่แต่มีลำดับควาสำคัญน้อยกว่าโปรเซสในคิว ให้โปรเซสที่เกิดใหม่ไปเก็บในคิว
                     END_P = i + P[index].BurtT;     // เวลาจบการทำงานของโปรเซส
                     Gantt[NG]       = index;
                     P[index].start  = i;            //เก็บค่าเวลาที่โปรเซสได้เริ่มทำงาน
@@ -110,7 +111,7 @@ void NPre_Priority(){
 void calNT(){
     int sumBurt = 0;
     int minArrival = P[1].ArrivalT;
-    for (int i = 1; i <= NP; ++i) {
+    for (int i = 1; i <=NP; ++i) {
         if(P[i].ArrivalT < minArrival){
             minArrival = P[i].ArrivalT;
         }
