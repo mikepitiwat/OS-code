@@ -48,7 +48,7 @@ void pop(){
 int minPriority(int index){                 // หาโปรเซสที่มีลำดับความสำคัญสูงสุด ในกรณี ที่โปรเซสเกิดพร้อมกัน
     int temp[20], n = 0;
     int index2 = index;
-    int min = P[index].BurtT;
+    int min = P[index].Priority;
     for (int i = 1; i <= NP; i++) {
         if(P[index].ArrivalT == P[i].ArrivalT){
             temp[n++] = i;
