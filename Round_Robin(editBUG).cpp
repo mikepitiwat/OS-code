@@ -104,7 +104,7 @@ void Round_Robin(){
             if (i == P[j].ArrivalT) {                   // ณ เวลาที่ i มี process[j] เกิดขึ้น
                 index = j;
                 if (i >= END_P && (F ==0 && R == 0 )) { // ถ้าจบQuantum time = โปรเซสสามารเข้าไปทำงานได้
-                    index = duplicate(index);           // ตรวจสอบว่า มีโปรเซสเกิดขึ้นพร้อมกัน ใช่หรือไม่ (ถ้าใช่ก่ใช่ FCFS)
+                    index = duplicate(index);           // ตรวจสอบว่า มีโปรเซสเกิดขึ้นพร้อมกัน ใช่หรือไม่ (ถ้าใช่ก็ใช้FCFS)
                     if(P[index].BurtT <= T_SLICE) {     // ถ้าเวลาทำงานของโปรเซสมีค่าน้อยกว่าเท่ากับ Quantum time
                         END_P = i + P[index].BurtT;     // ให้ Quantum time จบตามเวลาที่น้อยกว่า
                         runingP = 0;                    // ไม่มีโปรเซสอยู่ในสถานะทำงาน (เพราะจบในเวลา Quantum time )
